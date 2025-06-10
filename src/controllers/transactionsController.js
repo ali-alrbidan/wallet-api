@@ -23,7 +23,10 @@ export async function createTransaction(req, res) {
     RETURNING *
     `;
     console.log(transaction);
-    return res.status(201).json(transaction[0]);
+    return res.status(201).json({
+      message: "Transaction created successfully",
+      transaction: transaction[0],
+    });
   } catch (error) {
     console.log("error creating the transactions", error);
     res.status(500).json({ message: "internal server error" });
